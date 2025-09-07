@@ -14,4 +14,4 @@ jobs:
 
       - name: Test SSH connection
         run: |
-          ssh -o StrictHostKeyChecking=no ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }} "echo 'SSH 연결 성공 ✅'"
+          ssh -p 2222 -o StrictHostKeyChecking=no ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }} "echo 'SSH 연결 성공 ✅'"
