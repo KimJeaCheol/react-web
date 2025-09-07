@@ -30,8 +30,8 @@ jobs:
           context: .
           push: true
           tags: |
-            ghcr.io/${{ secrets.GHCR_USER,, }}/react-web:latest
-            ghcr.io/${{ secrets.GHCR_USER,, }}/react-web:${{ github.sha }}
+            ghcr.io/${{ secrets.GHCR_USER }}/react-web:latest
+            ghcr.io/${{ secrets.GHCR_USER }}/react-web:${{ github.sha }}
 
   deploy-to-nas:
     runs-on: ubuntu-latest
