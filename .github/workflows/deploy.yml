@@ -45,9 +45,14 @@ jobs:
       - name: Deploy to Synology NAS
         run: |
           ssh -p 2222 -o StrictHostKeyChecking=no ${{ secrets.NAS_USER }}@${{ secrets.NAS_HOST }} << 'EOF'
+          set -e
           cd /volume1/docker/react-web
+          echo "🔑 Docker login..."
           docker login ghcr.io -u ${{ secrets.GHCR_USER }} -p ${{ secrets.GHCR_TOKEN }}
+          echo "⬇️ Pull latest image..."
           docker compose pull
+          echo "🚀 Restarting container..."
           docker compose up -d
+          echo "🧹 Cleaning old images..."
           docker image prune -f
           EOF
