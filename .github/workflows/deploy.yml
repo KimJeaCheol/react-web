@@ -48,11 +48,11 @@ jobs:
           set -e
           cd /volume1/docker/react-web
           echo "🔑 Docker login..."
-          sudo docker login ghcr.io -u ${{ secrets.GHCR_USER }} -p ${{ secrets.GHCR_TOKEN }}
+          docker login ghcr.io -u ${{ secrets.GHCR_USER }} -p ${{ secrets.GHCR_TOKEN }}
           echo "⬇️ Pull latest image..."
-          sudo docker compose pull
+          docker compose pull
           echo "🚀 Restarting container..."
-          sudo docker compose up -d
+          docker compose up -d
           echo "🧹 Cleaning old images..."
-          sudo docker image prune -f
+          docker image prune -f
           EOF
